@@ -4,7 +4,8 @@ import mealClasses from "./page.module.css";
 import MealsGrid from "@/components/meals/meals-grid";
 
 const { header, highlight, cta, loading, main } = mealClasses;
-export default function page() {
+
+export default function MealsPage() {
   return (
     <>
       <header className={header}>

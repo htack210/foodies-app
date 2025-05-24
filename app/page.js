@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 
-import hdrClasses from "./page.module.css";
 import ImageSlideshow from "@/components/images/image-slideshow";
+import hdrClasses from "./page.module.css";
 
 const { header, hero, section, slideshow, cta } = hdrClasses;
 

@@ -1,7 +1,42 @@
-export default function page() {
+import Image from "next/image";
+
+import mealIcon from "@/assets/icons/meal.png";
+import communityIcon from "@/assets/icons/community.png";
+import eventsIcon from "@/assets/icons/events.png";
+import cmtClasses from "./page.module.css";
+
+const { header, main, perks, highlight } = cmtClasses;
+
+export default function CommunityPage() {
   return (
-    <main>
-      <h1>Community</h1>
-    </main>
+    <>
+      <header className={header}>
+        <h1>
+          One shared passion: <span className={highlight}>Food</span>
+        </h1>
+        <p>Join our community and share your favorite recipes!</p>
+      </header>
+      <main className={main}>
+        <h2>Community Perks</h2>
+
+        <ul className={perks}>
+          <li>
+            <Image src={mealIcon} alt="A delicious meal" />
+            <p>Share & discover recipes</p>
+          </li>
+          <li>
+            <Image src={communityIcon} alt="A crowd of people, cooking" />
+            <p>Find new friends & like-minded people</p>
+          </li>
+          <li>
+            <Image
+              src={eventsIcon}
+              alt="A crowd of people at a cooking event"
+            />
+            <p>Participate in exclusive events</p>
+          </li>
+        </ul>
+      </main>
+    </>
   );
 }

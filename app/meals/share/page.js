@@ -6,9 +6,6 @@ import { shareMeal } from "@/lib/actions";
 const { header, highlight, main, form, row, actions } = classes;
 
 export default function ShareMealPage() {
-
-
-
   return (
     <>
       <header className={header}>
@@ -22,20 +19,20 @@ export default function ShareMealPage() {
           <div className={row}>
             <p>
               <label htmlFor="name">Your name</label>
-              <input type="text" id="name" name="name"  />
+              <input type="text" id="name" name="name" required />
             </p>
             <p>
               <label htmlFor="email">Your email</label>
-              <input type="email" id="email" name="email"  />
+              <input type="email" id="email" name="email" required />
             </p>
           </div>
           <p>
             <label htmlFor="title">Title</label>
-            <input type="text" id="title" name="title"  />
+            <input type="text" id="title" name="title" required />
           </p>
           <p>
             <label htmlFor="summary">Short Summary</label>
-            <input type="text" id="summary" name="summary"  />
+            <input type="text" id="summary" name="summary" required />
           </p>
           <p>
             <label htmlFor="instructions">Instructions</label>
@@ -43,10 +40,10 @@ export default function ShareMealPage() {
               id="instructions"
               name="instructions"
               rows="10"
-              
+              required
             ></textarea>
           </p>
-          <ImagePicker label="Your image" name="image" />
+          <ImagePicker label="Your image" name="image" required />
           <p className={actions}>
             <MealsFormSubmit />
           </p>

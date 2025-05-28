@@ -20,7 +20,7 @@ export default function ShareMealPage() {
         <p>Or any other meal you feel needs sharing!</p>
       </header>
       <main className={main}>
-        <form className={form} action={formAction}>
+        <form className={form} action={formAction} encType="multipart/form-data">
           <div className={row}>
             <p>
               <label htmlFor="name">Your name</label>
@@ -47,7 +47,7 @@ export default function ShareMealPage() {
               rows="10"
             ></textarea>
           </p>
-          <ImagePicker label="Your image" id="image"  />
+          <ImagePicker label="Your image" name="image" />
           {state.message && <p className={actions}>{state.message}</p>}
           <p className={actions}>
             <MealsFormSubmit />

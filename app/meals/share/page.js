@@ -47,7 +47,7 @@ export default function ShareMealPage() {
               rows="10"
             ></textarea>
           </p>
-          <ImagePicker label="Your image" name="image" />
+          <ImagePicker label="Your image" name="image" id="image"/>
           {state.message && <p className={actions}>{state.message}</p>}
           <p className={actions}>
             <MealsFormSubmit />

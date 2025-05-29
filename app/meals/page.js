@@ -5,12 +5,6 @@ import mealClasses from "./page.module.css";
 import MealsGrid from "@/components/meals/meals-grid";
 import { getMeals } from "@/lib/meals";
 
-const meals = await getMeals();
-  return {
-    title: `All Meals (${meals.length})`,
-    description: "Browse the delicious meals, shared by a food-loving community.",
-  };
-
 export const metadata = {
   title: "All Meals",
   description: "Browse thg delicious meals, shared by a food-loving community.",

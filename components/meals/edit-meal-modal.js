@@ -24,7 +24,7 @@ export default function EditMealModal({ meal, onClose }) {
     onClose();
   }
 
-return (
+  return (
     <div className={modalClasses.modalBackdrop}>
       <div className={modalClasses.modal}>
         <h2>Edit Meal</h2>
@@ -49,6 +49,12 @@ return (
                 value={form.creator_email}
                 onChange={handleChange}
               />
+              <input
+                type="hidden"
+                id="org_email"
+                name="org_email"
+                value={meal.creator_email}
+              />
             </p>
           </div>
           <p>
@@ -60,6 +66,12 @@ return (
               value={form.title}
               onChange={handleChange}
             />
+            <input
+              type="hidden"
+              id="org_title"
+              name="org_title"
+              value={meal.title}
+            />
           </p>
           <p>
             <label htmlFor="summary">Short Summary</label>
@@ -70,19 +82,34 @@ return (
               value={form.summary}
               onChange={handleChange}
             />
+            <input
+              type="hidden"
+              id="org_summary"
+              name="org_summary"
+              value={meal.summary}
+            />
           </p>
           <p>
             <label htmlFor="instructions">Instructions</label>
             <textarea
               id="instructions"
               name="instructions"
-              rows="10"
+              rows="5"
               value={form.instructions}
               onChange={handleChange}
             ></textarea>
+            <input
+              type="hidden"
+              id="org_instructions"
+              name="org_instructions"
+              value={meal.instructions}
+            ></input>
           </p>
           <ImagePicker label="Your image" name="image" id="image" />
-          <div className={`${formClasses.actions} ${modalClasses.modalActions}`}>
+          <input type="hidden" name="org_image" value={meal.image} />
+          <div
+            className={`${formClasses.actions} ${modalClasses.modalActions}`}
+          >
             <button type="submit">Save</button>
             <button type="button" onClick={onClose}>
               Cancel

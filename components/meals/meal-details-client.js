@@ -1,8 +1,11 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
+import { useFormState } from "react-dom";
+
 import classes from "@/app/meals/[slug]/page.module.css";
 import EditMealModal from "@/components/meals/edit-meal-modal";
+import { deleteMeal } from "@/lib/actions";
 
 export default function MealDetailsClient({ meal }) {
   const { header, image, headerText, creator, summary, instructions } = classes;
@@ -10,6 +13,7 @@ export default function MealDetailsClient({ meal }) {
 
   // Convert instructions for display
   const displayInstructions = meal.instructions.replace(/\n/g, "<br />");
+  const [deleteState, deleteAction] = useFormState(deleteMeal, null);
 
   return (
     <>
@@ -40,14 +44,16 @@ export default function MealDetailsClient({ meal }) {
             >
               Edit
             </button>
-            <button className={classes.actionBtn}>Delete</button>
+            <form action={deleteAction} style={{ display: "inline" }}>
+              <input type="hidden" name="slug" value={meal.slug} />
+              <button className={classes.actionBtn} type="submit">
+                Delete
+              </button>
+            </form>
           </div>
         </div>
         {showEditModal && (
-          <EditMealModal
-            meal={meal}
-            onClose={() => setShowEditModal(false)}
-          />
+          <EditMealModal meal={meal} onClose={() => setShowEditModal(false)} />
         )}
       </main>
     </>

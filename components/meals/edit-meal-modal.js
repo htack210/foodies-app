@@ -1,9 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useFormState } from "react-dom";
 import modalClasses from "./edit-meal-modal.module.css";
 import formClasses from "@/app/meals/share/page.module.css";
 import ImagePicker from "@/components/meals/image-picker";
+import { updateMeal } from "@/lib/actions";
 
 export default function EditMealModal({ meal, onClose }) {
+  const [state, formAction] = useFormState(updateMeal, { message: null });
+
+  useEffect(() => {
+    if (state && state.message === "success") {
+      onClose();
+    }
+  }, [state, state?.message, onClose]);
+
   const [form, setForm] = useState({
     title: meal.title,
     summary: meal.summary,
@@ -17,18 +27,15 @@ export default function EditMealModal({ meal, onClose }) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    // TODO: Call your updateMeal API here, then close modal
-    // await updateMeal(form);
-    onClose();
-  }
-
   return (
     <div className={modalClasses.modalBackdrop}>
       <div className={modalClasses.modal}>
         <h2>Edit Meal</h2>
-        <form className={formClasses.form} onSubmit={handleSubmit}>
+        <form
+          className={formClasses.form}
+          action={formAction}
+          encType="multipart/form-data"
+        >
           <div className={formClasses.row}>
             <p>
               <label htmlFor="name">Your name</label>
@@ -105,7 +112,12 @@ export default function EditMealModal({ meal, onClose }) {
               value={meal.instructions}
             ></input>
           </p>
-          <ImagePicker label="Your image" name="image" id="image" />
+          <ImagePicker
+            label="Your image"
+            name="image"
+            id="image"
+            defaultImage={meal.image}
+          />
           <input type="hidden" name="org_image" value={meal.image} />
           <div
             className={`${formClasses.actions} ${modalClasses.modalActions}`}

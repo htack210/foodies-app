@@ -7,8 +7,8 @@ import classes from "./image-picker.module.css";
 
 const { controls, picker, input, button, preview } = classes;
 
-export default function ImagePicker({ label, name }) {
-  const [pickedImage, setPickedImage] = useState();
+export default function ImagePicker({ label, name, defaultImage }) {
+  const [pickedImage, setPickedImage] = useState(defaultImage || null);
   const imageInput = useRef();
 
   function handlePickClick() {
@@ -19,7 +19,7 @@ export default function ImagePicker({ label, name }) {
     const file = event.target.files[0];
 
     if (!file) {
-      setPickedImage(null);
+      setPickedImage(defaultImage || null);
       return;
     }
 

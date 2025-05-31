@@ -28,11 +28,11 @@ export default function ShareMealPage() {
           <div className={row}>
             <p>
               <label htmlFor="name">Your name</label>
-              <input type="text" id="name" name="name" />
+              <input type="text" id="name" name="creator" />
             </p>
             <p>
               <label htmlFor="email">Your email</label>
-              <input type="email" id="email" name="email" />
+              <input type="email" id="email" name="creator_email" />
             </p>
           </div>
           <p>

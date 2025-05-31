@@ -56,6 +56,7 @@ export default function EditMealModal({ meal, onClose }) {
                 value={form.creator_email}
                 onChange={handleChange}
               />
+              <input type="hidden" name="slug" value={meal.slug} />
               <input
                 type="hidden"
                 id="org_email"
@@ -119,6 +120,19 @@ export default function EditMealModal({ meal, onClose }) {
             defaultImage={meal.image}
           />
           <input type="hidden" name="org_image" value={meal.image} />
+          {state && state.message && state.message !== "success" && (
+            <p
+              style={{
+                color: "white",
+                marginBottom: "1rem",
+                fontSize: "1.2rem",
+                fontWeight: "bold",
+                textAlign: "right",
+              }}
+            >
+              {state.message}
+            </p>
+          )}
           <div
             className={`${formClasses.actions} ${modalClasses.modalActions}`}
           >
